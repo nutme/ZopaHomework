@@ -4,6 +4,8 @@ namespace ZopaHomework
 {
     class Program
     {
+        private static readonly int loanPeriodInMonths = 36;
+
         static void Main(string[] args)
         {
             var csvFileName = args[0].ToString();
@@ -17,15 +19,13 @@ namespace ZopaHomework
                 return;
             }
 
-            var loanCalculator = new LoanCalculator(new LoanDistributor());
-            var deal = loanCalculator.GetDeal(lenders, requestedLoan);
+            var loanCalculator = new LoanCalculator(new LoanDistributor(), new RepaymentsCalculator());
+            var deal = loanCalculator.GetDeal(lenders, requestedLoan, loanPeriodInMonths);
             
             Console.WriteLine($"Requested amount: £{requestedLoan}");
-            Console.WriteLine($"Rate: {deal.Rate}%");
-            Console.WriteLine($"Monthly repayment: £{deal.MonthlyRepayment}");
-            Console.WriteLine($"Total repayment: £{deal.TotalRepayment}");
-
-            Console.ReadKey();
+            Console.WriteLine($"Rate: {Math.Round(deal.Rate * 100, 1, MidpointRounding.AwayFromZero).ToString("0.0")}%");
+            Console.WriteLine($"Monthly repayment: £{Math.Round(deal.MonthlyRepayment, 2, MidpointRounding.AwayFromZero).ToString("0.00")}");
+            Console.WriteLine($"Total repayment: £{Math.Round(deal.TotalRepayment, 2, MidpointRounding.AwayFromZero).ToString("0.00")}");
         }
     }
 }

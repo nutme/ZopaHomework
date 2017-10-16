@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -24,7 +23,10 @@ namespace ZopaHomework
             foreach (var line in lines.Skip(1))
             {
                 var record = line.Split(',');
-                var lender = new Lender(record[0], double.Parse(record[1]), double.Parse(record[2]));
+                var lender = new Lender(
+                    record[0],                  // Name
+                    double.Parse(record[1]),    // Rate
+                    double.Parse(record[2]));   // Founds Available
                 lenders.Add(lender);
             }
 
