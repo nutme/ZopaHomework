@@ -4,13 +4,14 @@
     {
         public Lender(string name, double rate, double foundsAvailable)
         {
+            // need ID of some sort as well for data integrity
             Name = name;
             Rate = rate;
-            FoundsAvailable = foundsAvailable;
+            Founds = foundsAvailable;
         }
 
         public string Name { get; private set; }
         public double Rate { get; private set; }
-        public double FoundsAvailable { get; private set; }
+        public double Founds { get; private set; }
     }
 }

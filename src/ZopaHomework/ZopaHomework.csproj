@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoanCalculator.cs" />
+    <Compile Include="LoanDistributor.cs" />
     <Compile Include="LendersList.cs" />
     <Compile Include="Lender.cs" />
     <Compile Include="Program.cs" />

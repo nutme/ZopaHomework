@@ -17,14 +17,13 @@ namespace ZopaHomework
                 return;
             }
 
-            var rate = "unknown";
-            var monthlyRepayment = "unknown";
-            var totalRepayment = "unknown";
-
+            var loanCalculator = new LoanCalculator(new LoanDistributor());
+            var deal = loanCalculator.GetDeal(lenders, requestedLoan);
+            
             Console.WriteLine($"Requested amount: £{requestedLoan}");
-            Console.WriteLine($"Rate: {rate}%");
-            Console.WriteLine($"Monthly repayment: £{monthlyRepayment}");
-            Console.WriteLine($"Total repayment: £{totalRepayment}");
+            Console.WriteLine($"Rate: {deal.Rate}%");
+            Console.WriteLine($"Monthly repayment: £{deal.MonthlyRepayment}");
+            Console.WriteLine($"Total repayment: £{deal.TotalRepayment}");
 
             Console.ReadKey();
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -13,7 +14,7 @@ namespace ZopaHomework
             Lenders = lenders;
         }
 
-        public double TotalMoneyAvailable() => Lenders.Select(l => l.FoundsAvailable).Sum();
+        public double TotalMoneyAvailable() => Lenders.Select(l => l.Founds).Sum();
 
         public static LendersList LoadFromCsvFile(string csvFileName)
         {
